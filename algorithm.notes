@@ -1,0 +1,33 @@
+!Algorithm
+- set entire matrix as 0's
+    - these 0's will help us identify if a spot is empty
+-now that everything is set, its time to go into the heavy stuff
+!solving it, with backtracking
+- we are given the N amount of queens, which is equivalent to the matrix size, so 4x4 means we have 4 queens.
+- The user inputs a location, [i][j], this will be placed in our vector of vector of ints, same as a 2d array
+- From this location we need to make sure that we mark the vertical, horizontal,and diagonal blocks as (maybe 2's)
+    - with this, we need to see where the original queen was placed, and take into account where the top/bottom/sides end.
+        - the user will have to pick an x and y coordinate in between 0 - 3
+- After the user chooses their x and y coordinate, the first queen will be placed, and the 0 that is at the location will now be a 1.
+
+!placing the queen/recursive function
+    - this will NOT be the recursive part, this will simply take in the x and y from our loop, which will be in the recursive function
+        - if we are trying to place a queen at a place where there is a "2" we return 0;
+        - if we are placing a queen at a 0, we return 1,
+            - BUT, if the queen does not lead to a solution, to backtrack, we return 0 in the recursive function, and then we set the location to a ZERO
+                - so the location, that led us to a dead end, will be put to a 0
+                - so then, when it contiues to loop through the matrix to find a nother queen to place,  if it loops through the entire thing, we have hit another dead end
+                    - so then we return 0, and if we go all teh way to the beginning, which means the loop will continue on until it exits the nested for loop (for placing the queen)
+                        - it will return 0, which then will cause the main() to cout "no solution for given first queen, choose another location."
+            - this will go on until all queens have been places, once n == 0; return 1.
+    - we need to mark diagonals and nogo zones as 2
+        - we will need to check if x/y is > 0
+            - if x is > 0; we need to go backwards from x - 1, until we hit 0, and place 2's every in that row.(think about not changing the 1 to a 2, as in 1 is the placed queen)
+                - after we go backwards, we use another loop and go forwards from x + 1, until we hit 3
+            - if y > 0; we go backwards from y - 1, changing everything in that COLUMN to a 2. 
+                - after we go backwards, we go forward and from y + 1 until we hit 3, and then set that as 2.
+        - WHAT IF X or Y is 0???
+    
+
+
+

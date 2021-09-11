@@ -1,0 +1,38 @@
+!Random notes, the last assignment had difficulty settings 
+!Anyway
+
+
+!Start
+We first will start with a 4x4 matrix
+    - create global const 
+    - create 2D matrix and set every value as 0
+After this point, we have created the board.
+    - We will then have the user prompt for a place as to where they want to have their queen.
+        - This will have them input an x coordinate (0,1,2,3)
+            - and a y coordinate (0,1,2,3)
+From here, we are going to place the queen in its spot
+    - go to that location in the matrix, simply set it to 1
+        - Once we place this queen, the total amount of queens will go down by 1
+            - So now there are three total queens that can be placed
+!We need to find a way to keep track of where the other queens CANT be placed
+    - Top and down, diagonals, left and right. These become no go zones from where the queen was placed.
+        - So once the first queen is placed by the user, we need to mark these spots as 2.
+            - so to do right to left
+                - We need to check if x is 0 
+                - Else, we start with X
+                    - we start from x - 1, and go down to 0, x--
+                    - then we start from x + 1, and go up until we hit 3, x++
+            - to do top to bottom
+                - we check if y is 0
+                - Else
+                    - we start from y - 1, and go down and set it to 2, until we hit 0, y--
+                    - we start from y + 1, and go up and set it all to 2, y++
+            - then we need to figure out the diagonals
+                - diagonal from LEFT TO right
+                    - we go from x + 1, y + 1, !figure out limit
+                - from RIGHT TO LEFT
+                    - we go from x - 1, y - 1
+                - the opposite ways
+                    - x + 1, y - 1
+                - the other other way
+                    - x - 1, y + 1
